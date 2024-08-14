@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Statistics {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="my-4">URL Shortener Statistics</h2>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Short URL</th>
+                            <th>Original URL</th>
+                            <th>Clicks</th>
+                            <th>Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for url in urls %}
+                        <tr>
+                            <td>{{ url['id'] }}</td>
+                            <td><a href="{{ url['short_url'] }}">{{ url['short_url'] }}</a></td>
+                            <td>{{ url['original_url'] }}</td>
+                            <td>{{ url['clicks'] }}</td>
+                            <td>{{ url['created'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

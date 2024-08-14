@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid text-center bg-light">
+        <div class="container">
+            <h1 class="display-4">Welcome to URLShortener</h1>
+            <p class="lead">Shorten and manage your URLs with ease.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" class="card p-4 shadow-sm">
+                <h3 class="card-title mb-4">Shorten your URL</h3>
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" name="url" class="form-control" placeholder="Enter URL to shorten" value="{{ request.form['url'] }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+                {% if short_url %}
+                <div class="alert alert-success mt-3" role="alert">
+                    Short URL: <a href="{{ short_url }}" class="alert-link">{{ short_url }}</a>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
